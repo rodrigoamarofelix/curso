@@ -9,7 +9,7 @@ Este projeto configura um ambiente de desenvolvimento com Nginx como servidor we
 ├── docker-compose.yml
 ├── source/
 │   ├── index.html
-│   └── index.css
+│   └── estilo.css
 ├── postgres_data/     (criado automaticamente)
 └── postgres_init/
     └── 01-init.sql
