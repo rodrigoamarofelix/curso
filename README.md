@@ -9,7 +9,12 @@ Este projeto configura um ambiente de desenvolvimento com Nginx como servidor we
 ├── docker-compose.yml
 ├── source/
 │   ├── index.html
-│   └── estilo.css
+│   ├── css/
+│   │   └── estilo.css
+│   ├── images/
+│   │   └── google-logo.png
+│   └── videos/
+│       └── exemplo.mp4
 ├── postgres_data/     (criado automaticamente)
 └── postgres_init/
     └── 01-init.sql
