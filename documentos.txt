@@ -1,0 +1,54 @@
+Vou explicar detalhadamente o arquivo docker-compose.yml e como ele funciona:
+Versão do Docker Compose:
+Apply to docker-compo...
+Define a versão do formato do arquivo docker-compose
+A versão 3.8 é uma das mais recentes e estáveis
+Definição dos Serviços:
+Apply to docker-compo...
+A seção services define todos os containers que serão executados
+nginx: é o nome do serviço que estamos criando
+Configuração do Container:
+Apply to docker-compo...
+container_name: Define um nome fixo para o container
+image: Especifica qual imagem Docker será usada (nginx:latest é a versão mais recente do Nginx)
+Política de Reinicialização:
+Apply to docker-compo...
+Define quando o container deve reiniciar automaticamente
+unless-stopped: reinicia sempre, exceto quando parado manualmente
+Mapeamento de Portas:
+Apply to docker-compo...
+Mapeia portas do container para o host
+Formato: "PORTA_HOST:PORTA_CONTAINER"
+Neste caso, a porta 80 do container está acessível na porta 80 do seu computador
+Volumes:
+Apply to docker-compo...
+Mapeia diretórios do host para o container
+Formato: "CAMINHO_HOST:CAMINHO_CONTAINER"
+./source: diretório local com seus arquivos
+/usr/share/nginx/html: diretório dentro do container onde o Nginx serve os arquivos
+:ro: significa "read-only" (somente leitura)
+Para usar este Docker Compose:
+Iniciar os containers:
+Apply to docker-compo...
+Run
+-d: executa em background (modo detached)
+Parar os containers:
+Apply to docker-compo...
+Run
+Ver logs:
+Apply to docker-compo...
+Run
+Reiniciar os containers:
+Apply to docker-compo...
+Run
+Benefícios desta configuração:
+Isolamento: o Nginx roda em um ambiente isolado
+Portabilidade: funciona igual em qualquer sistema que tenha Docker
+Facilidade: um comando para iniciar todo o ambiente
+Segurança: arquivos em modo somente leitura
+Manutenção: fácil atualização da imagem do Nginx
+Para testar se está funcionando:
+Coloque seus arquivos HTML/CSS na pasta source
+Execute docker-compose up -d
+Acesse http://localhost no navegador
+Se precisar fazer alterações nos arquivos, basta editá-los na pasta source e o Nginx servirá automaticamente as versões atualizadas.

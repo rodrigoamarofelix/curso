@@ -8,3 +8,21 @@ services:
       - "80:80"
     volumes:
       - ./source:/usr/share/nginx/html:ro
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: curso_postgres
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: curso_db
+      POSTGRES_USER: curso_user
+      POSTGRES_PASSWORD: curso_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_init:/docker-entrypoint-initdb.d
+    command: >
+      bash -c "docker-entrypoint.sh postgres & sleep 10 && psql -U curso_user -d curso_db -f /docker-entrypoint-initdb.d/01-init.sql"
